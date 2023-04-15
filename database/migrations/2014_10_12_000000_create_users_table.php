@@ -16,7 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role')->default('Gestionnaire de Stock');
+            $table->enum('role', [
+                'Gestionnaire de Stock',
+                'Admin',
+                'Logisticien',
+                'Transporteur'
+            ])->default('Gestionnaire de Stock');
             $table->timestamps();
         });
     }
